@@ -1,0 +1,27 @@
+{
+    "name": "VRM.Tests",
+    "references": [
+        "VRM",
+        "UniGLTF",
+        "MeshUtility",
+        "MeshUtility.Editor",
+        "VRMShaders.GLTF.IO.Runtime",
+        "VRMShaders.GLTF.IO.Editor"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ]
+}
