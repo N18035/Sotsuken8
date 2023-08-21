@@ -25,7 +25,7 @@ namespace Ken{
             importer = this.gameObject.GetComponent<AudioImporter>();
             audioSource = this.gameObject.GetComponent<AudioSource>();
 
-            _clipName.Subscribe(_ => view.SetClipName(ClipName.Value))
+            _clipName.Subscribe(_ => view.SetClipName(_clipName.Value))
             .AddTo(this);
         }
 
@@ -43,16 +43,17 @@ namespace Ken{
             open_file_dialog.CheckFileExists = false;
 
             //ダイアログを開く
-            open_file_dialog.ShowDialog();
+            if (open_file_dialog.ShowDialog() == DialogResult.OK)
+            {
+                path = open_file_dialog.FileName;
 
-            path = open_file_dialog.FileName;
+                //FIXME正確にはclipが見つからないかどうかで判定したい
+                if(path == "") return;
 
-            //FIXME正確にはclipが見つからないかどうかで判定したい
-            if(path == "") return;
+                Destroy(audioSource.clip);
 
-            Destroy(audioSource.clip);
-
-            StartCoroutine(Import(path));
+                StartCoroutine(Import(path));
+            }
         }
 
         IEnumerator Import(string path)
@@ -70,7 +71,7 @@ namespace Ken{
             //完了通知
             _selectMusic.OnNext(Unit.Default);
             //クリップ名取得
-            _clipName.Value = importer.audioClip.ToString();
+            _clipName.Value = importer.audioClip.ToString().Replace("(UnityEngine.AudioClip)","");
 
             //FIXME最初シーク出来ない問題の暫定対応
             audioSource.Play();

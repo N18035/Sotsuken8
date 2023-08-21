@@ -15,10 +15,11 @@ namespace Ken{
         [SerializeField] Music _music;
         [SerializeField] AudioControlPresenter _audioControll;
 
-        [SerializeField] Ken.Main.SoundWave _soundWave;
-        [SerializeField] Ken.Main.SeekBar.SeekBarPresenter _seekBarPresenter;
-        [SerializeField] Ken.Main.TimeLine _timeLine;
-        [SerializeField] Ken.Main.Content _content;
+        [SerializeField] SoundWave _soundWave;
+        [SerializeField] ZoomModel _zoom;
+        [SerializeField] SeekBarPresenter _seekBarPresenter;
+        [SerializeField] TimeLinePresenter _timeLine;
+        [SerializeField] Ken.Main.ContentLengthPresenter _content;
         [SerializeField] AudioSource _audioSource;
 
         [SerializeField] MaskPresenter mask;
