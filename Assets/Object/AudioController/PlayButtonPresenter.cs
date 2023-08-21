@@ -11,6 +11,7 @@ namespace Ken.DanceView{
         [SerializeField] Image _image;
         [SerializeField] Sprite play;
         [SerializeField] Sprite pause;
+        [SerializeField] AudioSource audioSource;
         AudioControlPresenter _audioControl;
         AudioImportPresenter _audioImport;
         AudioCheckPresenter check;
@@ -21,27 +22,36 @@ namespace Ken.DanceView{
             _audioControl = AudioControlPresenter.I;
 
             _button.onClick.AsObservable()
-            .Where(_ => !AudioCheckPresenter.I.ClipIsNull())
-            .Subscribe(_ => Click())
+            .Where(_ => !AudioCheckPresenter.I.ClipIsNull() && audioSource.isPlaying)
+            .Subscribe(_ => _audioControl.Pause())
+            .AddTo(this);
+
+            _button.onClick.AsObservable()
+            .Where(_ => !AudioCheckPresenter.I.ClipIsNull() && !audioSource.isPlaying)
+            .Subscribe(_ => _audioControl.Play())
             .AddTo(this);
 
             _audioImport.OnSelectMusic
             .Subscribe(_ => _image.sprite = play)
             .AddTo(this);
+
+            Observable.EveryUpdate()
+                .Select(_ => audioSource.isPlaying)
+                .DistinctUntilChanged() // 状態が変化したときだけ通知
+                .Subscribe(isPlaying =>
+                {
+                    if (isPlaying)
+                    {
+                        _image.sprite = pause;
+                    }
+                    else
+                    {
+                        _image.sprite = play;;
+                    }
+                })
+                .AddTo(this);
         }
 
-        void Click(){
-            if(check.IsPlaying()){
-                //停止処理
-                _image.sprite = play;
-                _audioControl.Pause();
-            }
-            else{
-                //再生処理
-                _image.sprite = pause;
-                _audioControl.Play();
-            } 
-        }
     }
 }
 

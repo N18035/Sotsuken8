@@ -8,26 +8,20 @@ namespace Ken{
     public class BPMViewer : MonoBehaviour
     {
         [SerializeField] Text text;
-        AudioBPMPresenter _bpmSetting;
+        [SerializeField] Music _music;
+        [SerializeField] AudioSource _audioSource;
         AudioControlPresenter _audioControl;
 
         void Start()
         {
-            _bpmSetting = AudioBPMPresenter.I;
             _audioControl = AudioControlPresenter.I;
-
-            _bpmSetting.BPM
-            .Subscribe(_ => calc())
-            .AddTo(this);
-
-            _audioControl.Speed
-            .Subscribe(_ => calc())
-            .AddTo(this);
         }
 
-        void calc(){
-            var bpm = _bpmSetting.BPM.Value * _audioControl.Speed.Value;
-            text.text = ((int)bpm).ToString();
+        void Update(){
+            if(_audioSource.clip == null) return;
+            
+            if(Music.Just.IsNull())   text.text ="---";
+            else                     text.text = (_music.myTempo * _audioControl.Speed.Value).ToString();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Ken.Delay
         public IObservable<Unit> OnSelectDelay => _selectDelay;
         private Subject<Unit> _selectDelay = new Subject<Unit>();
         [SerializeField] DelaySliderManager manager;
-        [SerializeField] CountPresenter count;
+        [SerializeField] DelayChangePointPresenter count;
         [SerializeField] Music _music;
         
         public void Initialize(){

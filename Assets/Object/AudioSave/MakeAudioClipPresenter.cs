@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Windows.Forms; //OpenFileDialog用に使う
 using System.IO;
-using Ken.Delay;
+using Ken;
 
 public class MakeAudioClipPresenter : MonoBehaviour
 {

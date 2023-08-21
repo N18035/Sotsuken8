@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 6635702378364038684}
   - component: {fileID: 4939317377699827881}
   - component: {fileID: 732068344131967500}
-  - component: {fileID: 6380479735588135971}
   - component: {fileID: 4824120551328939558}
+  - component: {fileID: 3884229614514924173}
   m_Layer: 0
   m_Name: musicengine
   m_TagString: Untagged
@@ -192,6 +192,7 @@ MonoBehaviour:
   _music: {fileID: 6635702378364038683}
   _audioControll: {fileID: 0}
   _soundWave: {fileID: 0}
+  _zoom: {fileID: 0}
   _seekBarPresenter: {fileID: 0}
   _timeLine: {fileID: 0}
   _content: {fileID: 0}
@@ -209,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed071ff6a0e1554e873e2efeca4205c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 0}
 --- !u!114 &732068344131967500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,20 +224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audio: {fileID: 6635702378364038682}
---- !u!114 &6380479735588135971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6635702378364038680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67d2f73b8dafa454680ebc30e7a89c12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _music: {fileID: 6635702378364038683}
-  MaxBPM: 250
 --- !u!114 &4824120551328939558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,3 +238,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _music: {fileID: 6635702378364038683}
   _audioSource: {fileID: 6635702378364038682}
+--- !u!114 &3884229614514924173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635702378364038680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6646685dae7676c45a167c50da2cef6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _music: {fileID: 6635702378364038683}
+  MaxBPM: 250

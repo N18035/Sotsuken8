@@ -1,28 +1,25 @@
-using System.Collections;
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
-using UnityEngine.EventSystems;
-using Ken.Delay;
 
 namespace Ken
 {
 public class DelaySliderHandlePresenter : MonoBehaviour
 {
     bool isGrag;
+    DelaySliderManager manager;
     [SerializeField] DelaySliderHandleView view;
-    [SerializeField] DelaySliderManager Manager;
-    [SerializeField] SliderPresenter sliderP;
+    [SerializeField] DelaySliderPresenter presenter;
     [SerializeField] ObservableEventTrigger eventTrigger;
     
     void Start()
     {
+        manager = DelaySliderManager.I;
+
         //ハンドルにふれる系
         eventTrigger.OnPointerEnterAsObservable()
             .Subscribe(_ =>{
-                Manager.ChangeNow(sliderP.ID);
+                manager.ChangeNow(presenter.ID);
                 Selected();
             })
             .AddTo(this);
@@ -30,7 +27,7 @@ public class DelaySliderHandlePresenter : MonoBehaviour
         eventTrigger.OnPointerDownAsObservable()
             .Subscribe(_ =>{
                 isGrag=true;
-                Manager.ChangeNow(sliderP.ID);
+                manager.ChangeNow(presenter.ID);
                 Selected();
             })
             .AddTo(this);
@@ -48,13 +45,13 @@ public class DelaySliderHandlePresenter : MonoBehaviour
             .AddTo(this);
 
         //外部系
-        Manager.OnNowChanged
-        .Where(now => now == sliderP.ID)
+        manager.OnNow
+        .Where(now => now == presenter.ID)
         .Subscribe(_ => view.SetColor(true))
         .AddTo(this);
 
-        Manager.OnNowChanged
-        .Where(now => now != sliderP.ID)
+        manager.OnNow
+        .Where(now => now != presenter.ID)
         .Subscribe(_ => view.SetColor(false))
         .AddTo(this);
     }

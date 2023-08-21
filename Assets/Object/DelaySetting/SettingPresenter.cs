@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 
-namespace Ken.Delay{
+namespace Ken
+{
     public class SettingPresenter : MonoBehaviour
     {
         // [SerializeField] Toggle toggle;

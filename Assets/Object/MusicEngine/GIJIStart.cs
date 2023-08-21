@@ -9,7 +9,7 @@ namespace Ken{
     public class GIJIStart : Singleton<GIJIStart>
     {
         [SerializeField] AudioImportPresenter _audioImport;
-        [SerializeField] AudioBPMPresenter _bpmSetting;
+        [SerializeField] BPMManager _bpmSetting;
         [SerializeField] BeatTypeSetting _beatTypeSetting;
         [SerializeField] DelayPresenter _delay;
         [SerializeField] Music _music;

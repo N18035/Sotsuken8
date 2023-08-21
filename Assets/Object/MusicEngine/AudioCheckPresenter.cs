@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UniRx;
 
 namespace Ken
 {
@@ -47,6 +48,7 @@ namespace Ken
                 throw new Exception("ClipがNullです");
             }            
         }
+        
     }
 }
 

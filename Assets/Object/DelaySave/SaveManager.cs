@@ -10,7 +10,7 @@ namespace Ken
 {
     public class SaveManager : MonoBehaviour 
     {
-        [SerializeField] CountPresenter count;
+        [SerializeField] DelayChangePointPresenter count;
         [SerializeField] DelaySliderManager manager;
 
         public IReactiveProperty<string> Info => _inf;

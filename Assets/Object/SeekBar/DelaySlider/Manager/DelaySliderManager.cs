@@ -7,7 +7,7 @@ using System;
 using System.Linq;
 using Sirenix.OdinInspector;//SerializedMonoBehaviourを使うのに必要
 
-namespace Ken.Delay
+namespace Ken
 {
     public class DelaySliderManager : Singleton<DelaySliderManager>
     {
@@ -17,11 +17,12 @@ namespace Ken.Delay
         public bool allChange=false;
         public List<GameObject> Sliders = new List<GameObject>(1);
 
-        public IReactiveProperty<int> OnNowChanged => _nowChange;
+        public IReactiveProperty<int> OnNow => _nowChange;
         private readonly ReactiveProperty<int> _nowChange = new ReactiveProperty<int>();
 
-        [SerializeField] CountPresenter count;
+        [SerializeField] DelayChangePointPresenter count;
         [SerializeField] SettingPresenter setting;
+        // [SerializeField] AudioSource
 
         
         float oneBeat;
@@ -38,6 +39,7 @@ namespace Ken.Delay
         public void AddSlider(){
             if(check.ClipIsNull()) return;
             
+            //既にある時間には置けない
             for(int i=0;i<Sliders.Count;i++){
                 if(Sliders[i].GetComponent<Slider>().value == check.GetTime()) return;
             }
@@ -59,7 +61,7 @@ namespace Ken.Delay
             Destroy(tmp);
             ChangeNow(0);
             for(int i=0;i<Sliders.Count;i++){
-                Sliders[i].GetComponent<SliderPresenter>().ID =i;
+                Sliders[i].GetComponent<DelaySliderPresenter>().SetID(i);
             }
             count.PublicValidate();
         }
@@ -71,7 +73,7 @@ namespace Ken.Delay
             Sliders.Add(obj);
             
             //初期値代入
-            Sliders[0].GetComponent<SliderPresenter>().Ready();
+            Sliders[0].GetComponent<DelaySliderPresenter>().Ready();
         }
 
         public void DelaySetupForAudioTime(){
@@ -87,7 +89,7 @@ namespace Ken.Delay
             
             // 「60(1分)÷BPM(テンポ)で４分音符一拍分の長さ」(s)
             // 例) 60 / 120 = 0.5s
-            oneBeat = 60f / Sliders[now].GetComponent<SliderPresenter>().BPM;
+            oneBeat = 60f / Sliders[now].GetComponent<DelaySliderPresenter>().BPM;
 
             if(pm == PM.Plus) Sliders[now].GetComponent<Slider>().value += oneBeat;
             else    Sliders[now].GetComponent<Slider>().value -= oneBeat;
@@ -104,9 +106,9 @@ namespace Ken.Delay
         {
             if(allChange){
                 for(int i=0;i<Sliders.Count;i++){
-                    Sliders[i].GetComponent<SliderPresenter>().BPM = bpm;
+                    Sliders[i].GetComponent<DelaySliderPresenter>().SetBPM(bpm);
                 }
-            }else            Sliders[now].GetComponent<SliderPresenter>().BPM = bpm;
+            }else            Sliders[now].GetComponent<DelaySliderPresenter>().SetBPM(bpm);
 
             count.PublicValidate();
         }
@@ -115,6 +117,9 @@ namespace Ken.Delay
             now=id;
             //Sliders[now].transform.SetAsLastSibling();
             _nowChange.Value = id;
+            NowDelayTimeViewer.I.ChangeTime(GetNowValue());
+            // InputFieldPresenter.I.SetBPM(AudioControlPresenter.I.Speed.Value,GetNowBPM());
+
         }
 
        //テスト段階
@@ -124,11 +129,11 @@ namespace Ken.Delay
             List<int> bpm = new List<int>(){0};
 
             time[0] = Sliders[0].GetComponent<Slider>().value;
-            bpm[0] = Sliders[0].GetComponent<SliderPresenter>().BPM;
+            bpm[0] = Sliders[0].GetComponent<DelaySliderPresenter>().BPM;
 
             for(int i=1;i<Sliders.Count;i++){
                 time.Add(Sliders[i].GetComponent<Slider>().value);
-                bpm.Add(Sliders[i].GetComponent<SliderPresenter>().BPM);
+                bpm.Add(Sliders[i].GetComponent<DelaySliderPresenter>().BPM);
             }
 
             DelayData data = new DelayData(time,bpm);
@@ -139,7 +144,7 @@ namespace Ken.Delay
             //破壊
             Reset();
             Sliders[0].GetComponent<Slider>().value = data.GetTime(0);
-            Sliders[0].GetComponent<SliderPresenter>().BPM = data.GetBPM(0);
+            Sliders[0].GetComponent<DelaySliderPresenter>().SetBPM(data.GetBPM(0));
 
             //1個だけなら終了
             if(data.GetCount() <=0){ 
@@ -156,7 +161,7 @@ namespace Ken.Delay
 
                     var obj = InstantSlider();
                     obj.GetComponent<Slider>().value = data.GetTime(i);
-                    Sliders[i].GetComponent<SliderPresenter>().BPM = data.GetBPM(0);
+                    Sliders[i].GetComponent<DelaySliderPresenter>().SetBPM(data.GetBPM(i));
                 }
                 end();
                 return true;
@@ -173,7 +178,7 @@ namespace Ken.Delay
         }
 
         public int GetNowBPM(){
-            return Sliders[now].GetComponent<SliderPresenter>().BPM;
+            return Sliders[now].GetComponent<DelaySliderPresenter>().BPM;
         }
 
         public void CheckBatting(){
@@ -201,9 +206,9 @@ namespace Ken.Delay
         GameObject InstantSlider(){
             var obj = add.Instant();
             Sliders.Add(obj);           
-            obj.GetComponent<SliderPresenter>().Ready();
+            obj.GetComponent<DelaySliderPresenter>().Ready();
             now = Sliders.Count -1;
-            Sliders[now].GetComponent<SliderPresenter>().ID = now;
+            Sliders[now].GetComponent<DelaySliderPresenter>().SetID(now);
 
             return obj;
         }

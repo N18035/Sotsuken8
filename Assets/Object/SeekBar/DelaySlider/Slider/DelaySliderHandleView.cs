@@ -7,8 +7,6 @@ namespace Ken
 {
     [SerializeField] Image handle;
     [SerializeField] Image line;
-    private static readonly Color red = Color.red;
-    private static readonly Color white = Color.white;
 
     public void SetColor(bool on){
         if(on)  handle.color = Color.red;

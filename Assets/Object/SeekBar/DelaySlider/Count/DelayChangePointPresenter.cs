@@ -4,14 +4,14 @@ using UniRx;
 using UniRx.Triggers;
 using Cysharp.Threading.Tasks;
 
-namespace Ken.Delay{
-    public class CountPresenter : MonoBehaviour
+namespace Ken{
+    public class DelayChangePointPresenter : Singleton<DelayChangePointPresenter>
     {
 
         [SerializeField] AudioControlPresenter audioControl;
         [SerializeField] DelaySliderManager manager;
         [SerializeField] Music _music;
-        [SerializeField] AudioBPMPresenter _bpmSetting;
+        BPMManager _bpmSetting;
         [SerializeField] AudioSource audioSource;
  
         float buffer;
@@ -38,6 +38,8 @@ namespace Ken.Delay{
         }
 
         void Start(){
+            _bpmSetting = BPMManager.I;
+
             audioControl.OnPlayStart
             .Subscribe(_ => ValidateDelay())
             .AddTo(this);

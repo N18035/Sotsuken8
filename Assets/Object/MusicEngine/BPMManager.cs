@@ -6,7 +6,7 @@ using System;
 
 namespace Ken
 {
-    public class AudioBPMPresenter : Singleton<AudioBPMPresenter>
+    public class BPMManager : Singleton<BPMManager>
     {
         public IReadOnlyReactiveProperty<int> BPM => _bpm;
         private readonly ReactiveProperty<int> _bpm = new ReactiveProperty<int>();

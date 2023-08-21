@@ -4,8 +4,8 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 
-namespace Ken.Delay{
-    public class InputFieldPresenter : MonoBehaviour
+namespace Ken{
+    public class InputFieldPresenter : Singleton<InputFieldPresenter>
     {
         [SerializeField] InputField BPMInput;
 
@@ -32,7 +32,7 @@ namespace Ken.Delay{
             .Subscribe(_ => SetBPM(_audioControl.Speed.Value,manager.GetNowBPM()))
             .AddTo(this);
 
-            manager.OnNowChanged
+            manager.OnNow
             .Subscribe(_ => SetBPM(_audioControl.Speed.Value,manager.GetNowBPM()))
             .AddTo(this);
 
@@ -49,7 +49,7 @@ namespace Ken.Delay{
             .AddTo(this);
         }
 
-        void SetBPM(float speed , int BPM)
+        public void SetBPM(float speed , int BPM)
         {
             int bpm =(int)( speed * BPM);
             BPMInput.text = bpm.ToString();

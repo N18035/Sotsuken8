@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Ken.Delay
+namespace Ken
 {
     public class Add : MonoBehaviour
     {
