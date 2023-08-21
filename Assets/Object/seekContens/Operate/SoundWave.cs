@@ -15,10 +15,10 @@ namespace Ken.Main{
         [SerializeField]private float sat = .5f;//謎の数字。多分彩度か入力信号を上限と下限の飽和値に制限する
 
         Image img;
-        AudioCheck check;
+        AudioCheckPresenter check;
 
         void Start() {
-            check = AudioCheck.I;
+            check = AudioCheckPresenter.I;
             img = this.gameObject.GetComponent<Image>();    
         }
 

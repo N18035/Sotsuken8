@@ -8,10 +8,10 @@ namespace Ken.Delay{
     public class CountPresenter : MonoBehaviour
     {
 
-        [SerializeField] AudioControl audioControl;
+        [SerializeField] AudioControlPresenter audioControl;
         [SerializeField] DelaySliderManager manager;
         [SerializeField] Music _music;
-        [SerializeField] Setting.BPMSetting _bpmSetting;
+        [SerializeField] AudioBPMPresenter _bpmSetting;
         [SerializeField] AudioSource audioSource;
  
         float buffer;

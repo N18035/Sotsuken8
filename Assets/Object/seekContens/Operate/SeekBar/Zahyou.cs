@@ -12,7 +12,7 @@ namespace Ken.Main.SeekBar
         //外部
         [SerializeField] RectTransform canvasRect;
         [SerializeField] Content _contentZoom;
-        [SerializeField] AudioControl _audioController;
+        [SerializeField] AudioControlPresenter _audioController;
         [SerializeField] Music _music;
         [SerializeField] AudioSource _audio;
 

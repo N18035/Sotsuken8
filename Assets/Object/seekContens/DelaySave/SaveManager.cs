@@ -6,7 +6,7 @@ using System.Windows.Forms; //OpenFileDialog用に使う
 using UniRx;
 using System;
 
-namespace Ken.Save
+namespace Ken
 {
     public class SaveManager : MonoBehaviour 
     {
@@ -29,7 +29,7 @@ namespace Ken.Save
             if(_path.Value.Equals("")) return;
             WriteJson();
             _inf.Value = "上書き保存しました";
-            SystemSEManager.I.Good();
+            SystemSEPresenter.I.Good();
         }
         
         // jsonとしてデータを保存
@@ -51,7 +51,7 @@ namespace Ken.Save
                 _path.Value = sfd.FileName;
                 WriteJson();
                 _inf.Value = "新規保存しました";
-                SystemSEManager.I.Better();
+                SystemSEPresenter.I.Better();
                 MessageBox.Show("新規保存しました"+sfd.FileName, "通知", MessageBoxButtons.OK);
                 
             }

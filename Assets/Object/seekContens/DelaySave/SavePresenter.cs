@@ -13,23 +13,23 @@ namespace Ken.Save{
         [SerializeField] Text infoText;
         [SerializeField] Text pathText;
         [SerializeField] SaveManager manager;
-        [SerializeField] AudioImport import;
+        [SerializeField] AudioImportPresenter import;
         
 
         void Start(){
             saveB.onClick.AsObservable()
-            .Where(_ => !AudioCheck.I.ClipIsNull())
+            .Where(_ => !AudioCheckPresenter.I.ClipIsNull())
             .Subscribe(_ =>manager.Save())
             .AddTo(this);
 
 
             overRideB.onClick.AsObservable()
-            .Where(_ => !AudioCheck.I.ClipIsNull())
+            .Where(_ => !AudioCheckPresenter.I.ClipIsNull())
             .Subscribe(_ =>manager.NewSave())
             .AddTo(this);
 
             loadB.onClick.AsObservable()
-            .Where(_ => !AudioCheck.I.ClipIsNull())
+            .Where(_ => !AudioCheckPresenter.I.ClipIsNull())
             .Subscribe(_ =>manager.Load())
             .AddTo(this);
 

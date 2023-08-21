@@ -11,7 +11,7 @@ namespace Ken.Main.SeekBar
     public class SeekBarPresenter : MonoBehaviour
     {
         Slider slider;
-        [SerializeField] AudioControl _audioController;
+        [SerializeField] AudioControlPresenter _audioController;
         [SerializeField] Music _music;
         [SerializeField] AudioSource _audio;
 

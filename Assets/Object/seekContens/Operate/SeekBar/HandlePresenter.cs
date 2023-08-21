@@ -9,7 +9,7 @@ namespace Ken.Main.SeekBar
     {
         bool isGrag;
         [SerializeField] SeekBarView view;
-        [SerializeField] AudioControl audioControl;
+        [SerializeField] AudioControlPresenter audioControl;
 
         void Start(){
             // sliderP = this.gameObject.GetComponent<SliderPresenter>();

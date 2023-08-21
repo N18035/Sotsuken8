@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;//SerializedMonoBehaviourを使うのに必要
 
 namespace Ken.Delay
 {
-    public class DelaySliderManager : MonoBehaviour
+    public class DelaySliderManager : Singleton<DelaySliderManager>
     {
         [ReadOnly]
         public int now=0;
@@ -28,10 +28,10 @@ namespace Ken.Delay
 
         //委譲
         Add add;
-        AudioCheck check;
+        AudioCheckPresenter check;
 
         void Start(){
-            check = AudioCheck.I;
+            check = AudioCheckPresenter.I;
             add = this.GetComponent<Add>();
         }
 

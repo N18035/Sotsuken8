@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using System;
-using Ken.Setting;
 using Sirenix.OdinInspector;//SerializedMonoBehaviourを使うのに必要
 
 namespace Ken.Delay
