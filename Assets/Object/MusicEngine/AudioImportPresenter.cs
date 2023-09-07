@@ -21,6 +21,8 @@ namespace Ken{
 
         string path="";
 
+        [SerializeField] AudioClip kariClip;
+
         private void Start() {
             importer = this.gameObject.GetComponent<AudioImporter>();
             audioSource = this.gameObject.GetComponent<AudioSource>();
@@ -72,6 +74,19 @@ namespace Ken{
             _selectMusic.OnNext(Unit.Default);
             //クリップ名取得
             _clipName.Value = importer.audioClip.ToString().Replace("(UnityEngine.AudioClip)","");
+
+            //FIXME最初シーク出来ない問題の暫定対応
+            audioSource.Play();
+            audioSource.Pause();
+        }
+
+        public void SetMusicOnEditor(){
+            audioSource.clip = kariClip;
+
+            //完了通知
+            _selectMusic.OnNext(Unit.Default);
+            //クリップ名取得
+            _clipName.Value = kariClip.ToString();
 
             //FIXME最初シーク出来ない問題の暫定対応
             audioSource.Play();

@@ -30,6 +30,8 @@ namespace Ken{
             .Subscribe(_ => view.DeleteNotice())
             .AddTo(this);
 
+            //48の変更
+            //とりあえず消す
             beatTypeSetting.OnSelectBeatType
             .Subscribe(_ => ChangeBars())
             .AddTo(this);

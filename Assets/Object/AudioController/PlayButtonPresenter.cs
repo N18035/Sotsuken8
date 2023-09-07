@@ -8,7 +8,6 @@ namespace Ken.DanceView{
     public class PlayButtonPresenter : MonoBehaviour
     {
         [SerializeField] Button _button;
-        [SerializeField] Image _image;
         [SerializeField] Sprite play;
         [SerializeField] Sprite pause;
         [SerializeField] AudioSource audioSource;
@@ -22,17 +21,15 @@ namespace Ken.DanceView{
             _audioControl = AudioControlPresenter.I;
 
             _button.onClick.AsObservable()
-            .Where(_ => !AudioCheckPresenter.I.ClipIsNull() && audioSource.isPlaying)
-            .Subscribe(_ => _audioControl.Pause())
-            .AddTo(this);
-
-            _button.onClick.AsObservable()
-            .Where(_ => !AudioCheckPresenter.I.ClipIsNull() && !audioSource.isPlaying)
-            .Subscribe(_ => _audioControl.Play())
+            .Where(_ => !AudioCheckPresenter.I.ClipIsNull())
+            .Subscribe(_ =>{
+                if(audioSource.isPlaying)   _audioControl.Pause();
+                else                        _audioControl.Play();
+            } )
             .AddTo(this);
 
             _audioImport.OnSelectMusic
-            .Subscribe(_ => _image.sprite = play)
+            .Subscribe(_ => _button.image.sprite = play)
             .AddTo(this);
 
             Observable.EveryUpdate()
@@ -40,14 +37,8 @@ namespace Ken.DanceView{
                 .DistinctUntilChanged() // 状態が変化したときだけ通知
                 .Subscribe(isPlaying =>
                 {
-                    if (isPlaying)
-                    {
-                        _image.sprite = pause;
-                    }
-                    else
-                    {
-                        _image.sprite = play;;
-                    }
+                    if (isPlaying)    _button.image.sprite = pause;
+                else                  _button.image.sprite = play;;
                 })
                 .AddTo(this);
         }

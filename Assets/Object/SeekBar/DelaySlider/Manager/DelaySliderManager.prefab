@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 1384759716951981228}
   - component: {fileID: 1384759716951981229}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Slider(Preafab)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,8 +805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.1744995, y: -0.000011444092}
-  m_SizeDelta: {x: 7.875884, y: 0.0000038146973}
+  m_AnchoredPosition: {x: 2.1744995, y: -3.6797}
+  m_SizeDelta: {x: 7.8759, y: 7.3593}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2402481916372254145
 CanvasRenderer:
@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.037064895, b: 0.3490566, a: 1}
+  m_Color: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

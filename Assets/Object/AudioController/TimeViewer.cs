@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UniRx;
 
 namespace Ken
 {
@@ -9,16 +10,12 @@ namespace Ken
     {
         [SerializeField] AudioSource _audioSource;
         [SerializeField] Text _audioTime;
-        [SerializeField] Text _musicTime;
 
+        //[SerializeField] Text _musicTime;
+        [SerializeField]private List<Text> _musicTime;
 
         void AudioTIme(string s){
             _audioTime.text = s;
-        }
-
-        //Musicエンジンの時間
-        void MusicTime(string s){
-            _musicTime.text = s;
         }
 
 
@@ -28,8 +25,18 @@ namespace Ken
             //再生時間
             AudioTIme(_audioSource.time.ToString("F2"));
 
-            if(Music.Just.IsNull())   MusicTime("---");
-            else                     MusicTime(Music.Just.ToString());
+            if(Music.Just.IsNull()){
+                _musicTime[0].text = "---";
+                _musicTime[1].text = "-";
+                _musicTime[2].text = "-";
+            }
+            else
+            {
+                _musicTime[0].text = (Music.Just.Bar + 1).ToString();
+                _musicTime[1].text = (Music.Just.Beat + 1).ToString();
+                _musicTime[2].text = (Music.Just.Unit + 1).ToString();
+            }
+
         }
 
     }
