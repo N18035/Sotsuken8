@@ -1282,6 +1282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioSave
       objectReference: {fileID: 0}
+    - target: {fileID: 4708161760010439859, guid: 9baea26ce668c7b45aa51fe4fb5b4be0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4708161760010439860, guid: 9baea26ce668c7b45aa51fe4fb5b4be0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3268,7 +3272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390.3168, y: 48.703373}
+  m_AnchoredPosition: {x: -390.31693, y: 48.703373}
   m_SizeDelta: {x: 780.63, y: 49}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1891165539
@@ -6311,7 +6315,7 @@ PrefabInstance:
     - target: {fileID: 4939317377699827881, guid: 5390a28ad9c5d6e47ac2d35b08a84ac9, type: 3}
       propertyPath: kariClip
       value: 
-      objectReference: {fileID: 8300000, guid: b433b3a73834c8d4a98914f645c38742, type: 3}
+      objectReference: {fileID: 8300000, guid: 001b8e9bf8e7a3b42bc7ede3ed8fee37, type: 3}
     - target: {fileID: 6635702378364038680, guid: 5390a28ad9c5d6e47ac2d35b08a84ac9, type: 3}
       propertyPath: m_Name
       value: musicengine
