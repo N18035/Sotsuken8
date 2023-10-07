@@ -23,7 +23,6 @@ namespace Ken
             .Subscribe(b =>{
                 if(!b)   ChangeBeatType(4);
                 else ChangeBeatType(8);
-                _selectBeatType.OnNext(Unit.Default);
             })
             .AddTo(this);
         }

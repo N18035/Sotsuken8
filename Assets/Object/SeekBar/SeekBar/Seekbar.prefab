@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
+  m_Color: {r: 0, g: 0.0116882855, b: 0.49056602, a: 0.22745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -510,8 +510,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.000122, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: -5.000122, y: -21.319}
+  m_SizeDelta: {x: -20, y: 42.638}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6711676041776889474
 MonoBehaviour:
@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 9172972185494532485}
   - component: {fileID: 8216691378117077127}
   - component: {fileID: 2452387937122362405}
+  - component: {fileID: 7065981613195411327}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -565,8 +566,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -21.319}
+  m_SizeDelta: {x: 0, y: 42.637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9172972185494532485
 CanvasRenderer:
@@ -596,7 +597,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -623,3 +624,19 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &7065981613195411327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577241334251077133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 406fab3617f399e47b68df454c1981d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 15000
+  height: 240
+  waveformColor: {r: 0, g: 1, b: 0, a: 1}
+  sat: 0.5

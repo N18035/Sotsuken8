@@ -37,9 +37,9 @@ namespace Ken{
 
             //48の変更
             //とりあえず消す
-            // _beatTypeSetting.OnSelectBeatType
-            // .Subscribe(_ => NormalOnValidate())
-            // .AddTo(this);
+            _beatTypeSetting.OnSelectBeatType
+            .Subscribe(_ => NormalOnValidate())
+            .AddTo(this);
 
             _delay.OnSelectDelay
             .Subscribe(_ => NormalOnValidate())

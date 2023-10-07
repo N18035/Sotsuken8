@@ -31,7 +31,6 @@ namespace Ken{
             .AddTo(this);
 
             //48の変更
-            //とりあえず消す
             beatTypeSetting.OnSelectBeatType
             .Subscribe(_ => ChangeBars())
             .AddTo(this);
@@ -48,6 +47,7 @@ namespace Ken{
 
         //4小節と8小節を変更する
         void ChangeBars(){
+            view.DeleteNotice();
             if(music.myBeat == 4){
                 view.Hide8Notice();
             }else{
