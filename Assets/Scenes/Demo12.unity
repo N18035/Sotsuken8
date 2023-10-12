@@ -6176,7 +6176,7 @@ PrefabInstance:
     - target: {fileID: 4939317377699827881, guid: 5390a28ad9c5d6e47ac2d35b08a84ac9, type: 3}
       propertyPath: kariClip
       value: 
-      objectReference: {fileID: 8300000, guid: ef7bc97f0b7e71048b6f70010bda912e, type: 3}
+      objectReference: {fileID: 8300000, guid: 001b8e9bf8e7a3b42bc7ede3ed8fee37, type: 3}
     - target: {fileID: 6635702378364038680, guid: 5390a28ad9c5d6e47ac2d35b08a84ac9, type: 3}
       propertyPath: m_Name
       value: musicengine

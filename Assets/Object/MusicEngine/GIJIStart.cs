@@ -19,7 +19,7 @@ namespace Ken{
         [SerializeField] ZoomModel _zoom;
         [SerializeField] SeekBarPresenter _seekBarPresenter;
         [SerializeField] TimeLinePresenter _timeLine;
-        [SerializeField] Ken.Main.ContentLengthPresenter _content;
+        [SerializeField] Main.ContentLengthPresenter _content;
         [SerializeField] AudioSource _audioSource;
 
         [SerializeField] MaskPresenter mask;

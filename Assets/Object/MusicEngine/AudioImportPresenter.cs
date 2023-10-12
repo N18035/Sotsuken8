@@ -117,6 +117,8 @@ namespace Ken{
             //FIXME最初シーク出来ない問題の暫定対応
             audioSource.Play();
             audioSource.Pause();
+
+            view.StopBlinking();
         }
 
         public void SetMusicOnEditor(){
@@ -130,6 +132,8 @@ namespace Ken{
             //FIXME最初シーク出来ない問題の暫定対応
             audioSource.Play();
             audioSource.Pause();
+
+            view.StopBlinking();
         }
     }
 }

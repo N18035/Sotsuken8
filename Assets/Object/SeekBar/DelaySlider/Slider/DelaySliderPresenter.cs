@@ -11,6 +11,7 @@ namespace Ken
         DelayChangePointPresenter count;
         NowDelayTimeViewer time;
         AudioCheckPresenter audioCheck;
+        AudioImportPresenter _audioImport;
         [SerializeField] AudioSource _audio;
 
         [SerializeField] Slider thisSlider;
@@ -52,7 +53,15 @@ namespace Ken
 
             thisSlider.onValueChanged.AsObservable()
             .Where(_ => audioCheck.ClipIsNull())
-            .Subscribe(t => thisSlider.value = 0)
+            .Subscribe(_ =>{
+                thisSlider.value = 0;
+                // time.ChangeTime(0);
+            } )
+            .AddTo(this);
+
+            AudioImportPresenter.I
+            .OnSelectMusic
+            .Subscribe(_ => time.ChangeTime(0))
             .AddTo(this);
         }
 
