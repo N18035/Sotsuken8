@@ -24,6 +24,7 @@ namespace Ken{
         {
             if(!audioSource.isPlaying) return;
 
+            //今が何番目のdelayスライダーのハンドルかを確認する
             for(int i=0;i<data.GetCount();i++){
                 //1:再生時間がdata[]よりも小さいと判定が出たら終了する
                 if(audioSource.time + buffer < data.GetTime(i))    break;
@@ -50,17 +51,22 @@ namespace Ken{
             data = manager.CreateDelayTimeData();
 
             // 一般的には44100
+            //開始秒数をtimesampleで指定
+            //Debug.Log(_music.EntryPointSample);
             _music.EntryPointSample = (int)(data.GetTime(tmpIndex) * audioSource.clip.frequency);
-            
+            //Debug.Log(_music.EntryPointSample);
+
             //BPMをセット
             _bpmSetting.ChangeBPM(data.GetBPM(tmpIndex));
             _bpmSetting.Apply();
 
+            //今が何個目のdelayかを設定
             NowIndex = tmpIndex;
-            //TODO UIに指示
-            // DelayPresenter.I.GO();
+
+            //今となっては謎。いらん
+            //間に合うラインの設定
             //60/bpm/4 = bar * 速度ごとに間に合うラインがあるからそこを見つける(speed * 係数)
-            buffer = 60f / _music.myTempo / 4 * audioControl.Speed.Value * 2;
+            //buffer = 60f / _music.myTempo / 4 * audioControl.Speed.Value * 2;
             // Debug.Log(buffer);
         }
 

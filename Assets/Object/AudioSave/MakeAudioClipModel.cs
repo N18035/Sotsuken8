@@ -20,9 +20,9 @@ public class MakeAudioClipModel:MonoBehaviour
         //絶対に1つはdelayがあって、2つに分離される
         //最初の無音、左の区間
         float[] combinedClipData = MakeSilence(data.GetTime(0));
-        Debug.Log("さいしょ:"+data.GetTime(0));
+        //Debug.Log("さいしょ:"+data.GetTime(0));
 
-        Debug.Log(data.GetCount());
+        //Debug.Log(data.GetCount());
         //もし、2つ以上あれば処理
         if(data.GetCount() >= 2){
             for(int i=0;i<data.GetCount()-1;i++){

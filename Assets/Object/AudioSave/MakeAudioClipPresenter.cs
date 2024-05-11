@@ -13,6 +13,8 @@ public class MakeAudioClipPresenter : MonoBehaviour
 
     public void Make()
     {
+        if (AudioCheckPresenter.I.ClipIsNull()) return;
+
         Debug.Log(model);
         if(mainAudio==null || beat.clip == null)   return;
 

@@ -23,6 +23,7 @@ namespace Ken{
             .Subscribe(t =>{
                 var value = float.Parse(t);
                 int bpm = (int)(value / _audioControl.Speed.Value);
+                bpm = bpm < 1 ? 1 : bpm;
                 manager.BPMSet(bpm);
             })
             .AddTo(this);
@@ -54,5 +55,6 @@ namespace Ken{
             int bpm =(int)( speed * BPM);
             BPMInput.text = bpm.ToString();
         }
+
     }
 }

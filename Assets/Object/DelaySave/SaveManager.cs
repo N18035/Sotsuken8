@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;//SerializedMonoBehaviourを使うのに必要
 using System.Windows.Forms; //OpenFileDialog用に使う
 using UniRx;
 using System;
+using SFB;
 
 namespace Ken
 {
@@ -45,6 +46,8 @@ namespace Ken
             sfd.Title = "保存先のファイルを選択してください";
             sfd.RestoreDirectory = true;//ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
 
+
+
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 //フィールドにパスを保存
@@ -76,11 +79,27 @@ namespace Ken
             open_file_dialog.CheckFileExists = true;
 
 
-            //ダイアログを開いてpathを取得
+            ////ダイアログを開いてpathを取得
             open_file_dialog.ShowDialog();
-            string path="";
+            string path ="";
             path = open_file_dialog.FileName;
-            if(path.Equals("")) return;
+            if (path.Equals("")) return;
+
+            Debug.Log(path);
+
+            //新しい方式
+            //var extensions = new[] {
+            //    new ExtensionFilter("Json Files", "json")
+            //};
+            //var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, false);
+            //if (paths.Length > 0 && paths[0].Length > 0)
+            //{
+            //    //StartCoroutine(Load(new System.Uri(paths[0]).AbsoluteUri));
+            //    Debug.Log(new System.Uri(paths[0]).AbsoluteUri);
+            //    path = new System.Uri(paths[0]).AbsoluteUri;
+            //}
+
+
 
             //フィールドに保存
             _path.Value = path;

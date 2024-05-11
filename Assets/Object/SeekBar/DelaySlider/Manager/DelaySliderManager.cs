@@ -82,24 +82,24 @@ namespace Ken
             else    throw new Exception("えら-");
         }
 
-        public void DelayAdjustForBeat(PM pm){
-            if(check.ClipIsNull()) return;
-            //多分clampしてくれる
-            // if(Sliders[now].GetComponent<Slider>().value == _delaySlider.maxValue) return;
+        //public void DelayAdjustForBeat(PM pm){
+        //    if(check.ClipIsNull()) return;
+        //    //多分clampしてくれる
+        //    // if(Sliders[now].GetComponent<Slider>().value == _delaySlider.maxValue) return;
             
-            // 「60(1分)÷BPM(テンポ)で４分音符一拍分の長さ」(s)
-            // 例) 60 / 120 = 0.5s
-            oneBeat = 60f / Sliders[now].GetComponent<DelaySliderPresenter>().BPM;
+        //    // 「60(1分)÷BPM(テンポ)で４分音符一拍分の長さ」(s)
+        //    // 例) 60 / 120 = 0.5s
+        //    oneBeat = 60f / Sliders[now].GetComponent<DelaySliderPresenter>().BPM;
 
-            if(pm == PM.Plus) Sliders[now].GetComponent<Slider>().value += oneBeat;
-            else    Sliders[now].GetComponent<Slider>().value -= oneBeat;
-        }
+        //    if(pm == PM.Plus) Sliders[now].GetComponent<Slider>().value += oneBeat;
+        //    else    Sliders[now].GetComponent<Slider>().value -= oneBeat;
+        //}
 
-        public void DelayAdjustForSecond(PM pm){
+        public void DelayAdjustForSecond(PM pm,float second){
             if(check.ClipIsNull()) return;
             // if(Slider[now].value == _delaySlider.maxValue) return;
-            if(pm == PM.Plus) Sliders[now].GetComponent<Slider>().value += 0.01f;
-            else    Sliders[now].GetComponent<Slider>().value -= 0.01f;
+            if(pm == PM.Plus) Sliders[now].GetComponent<Slider>().value += second;
+            else    Sliders[now].GetComponent<Slider>().value -= second;
         }
 
         public void BPMSet(int bpm)

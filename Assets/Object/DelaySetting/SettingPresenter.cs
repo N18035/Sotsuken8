@@ -20,24 +20,20 @@ namespace Ken
         [SerializeField] DelaySliderManager manager;
 
         void Start(){
-            // toggle.onValueChanged.AsObservable()
-            // .Subscribe(t => manager.allChange=t)
-            // .AddTo(this);
-
             buttonPulsBeat.onClick.AsObservable()
-            .Subscribe(_ =>manager.DelayAdjustForBeat(PM.Plus))
+            .Subscribe(_ =>manager.DelayAdjustForSecond(PM.Plus, 0.1f))
             .AddTo(this);
 
             buttonPulsSeconds.onClick.AsObservable()
-            .Subscribe(_ => manager.DelayAdjustForSecond(PM.Plus))
+            .Subscribe(_ => manager.DelayAdjustForSecond(PM.Plus,0.01f))
             .AddTo(this);
 
             buttonMinusBeat.onClick.AsObservable()
-            .Subscribe(_ => manager.DelayAdjustForBeat(PM.Minus))
+            .Subscribe(_ => manager.DelayAdjustForSecond(PM.Minus, 0.1f))
             .AddTo(this);
 
             buttonMinusSeconds.onClick.AsObservable()
-            .Subscribe(_ => manager.DelayAdjustForSecond(PM.Minus))
+            .Subscribe(_ => manager.DelayAdjustForSecond(PM.Minus, 0.01f))
             .AddTo(this);
 
             nowTimeSet.onClick.AsObservable()

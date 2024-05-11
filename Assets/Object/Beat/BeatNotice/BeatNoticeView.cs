@@ -5,6 +5,7 @@ namespace Ken{
     public class BeatNoticeView : MonoBehaviour
     {
         public Image[] _beatNoticeImage = new Image[8];
+        public Text[] _beatNoticetext = new Text[4];
 
         Color _onColorDown = new  Color32 (255, 255, 255, 255);
         Color _offColor = new Color32 (100 ,100 ,100, 150);
@@ -20,6 +21,7 @@ namespace Ken{
         public void Show8Notice(){
             for(int i=4;i<8;i++){
                 _beatNoticeImage[i].enabled=true;
+                _beatNoticetext[i-4].enabled = true;
             }
         }
 
@@ -27,6 +29,7 @@ namespace Ken{
         public void Hide8Notice(){
             for(int i=4;i<8;i++){
                 _beatNoticeImage[i].enabled=false;
+                _beatNoticetext[i-4].enabled = false;
             }
         }
 
